@@ -3,6 +3,7 @@ module Megam
         def initialize(o)
             @id = nil
             @asms_id = nil
+            @org_id = nil
             @name = nil
             @components = []
             @tosca_type = nil
@@ -12,7 +13,6 @@ module Megam
             @status = nil
             @state = nil
             @created_at = nil
-            @org_id = nil
             super(o)
         end
 
