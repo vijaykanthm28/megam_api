@@ -12,7 +12,7 @@ module Megam
             @status = nil
             @state = nil
             @created_at = nil
-
+            @org_id = nil
             super(o)
         end
 
@@ -108,6 +108,15 @@ module Megam
             end
         end
 
+        def org_id(arg = nil)
+            if !arg.nil?
+                @org_id = arg
+            else
+                @org_id
+            end
+        end
+
+
         def error?
             crocked = true if some_msg.key?(:msg_type) && some_msg[:msg_type] == 'error'
         end
@@ -127,6 +136,7 @@ module Megam
             index_hash['status'] = status
             index_hash['state'] = state
             index_hash['created_at'] = created_at
+            index_hash['org_id'] = org_id
             index_hash
         end
 
@@ -177,6 +187,7 @@ module Megam
 
         def from_hash(o)
             @id                = o['id'] if o.key?('id')
+            @org_id            = o['org_id'] if o.key?('org_id')
             @asms_id           = o["asms_id"] if o.has_key?("asms_id")
             @name              = o['name'] if o.key?('name')
             @components        = o['components'] if o.key?('components')
